@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 
 def rgb2gray(rgb):
+    #first 3 column
     return np.dot(rgb[...,:3], [0.299, 0.587, 0.144])
 
 def read_data(typeData, imageSize,trainID , path):
@@ -15,7 +16,8 @@ def read_data(typeData, imageSize,trainID , path):
     trainFiles = glob.glob( path + "/"+typeData + "Resized/*" )
     for i, nameFile in enumerate(trainFiles):
         # Read image
-        nameFile = "/".join( nameFile.split("/")[:-1] ) +"/" + trainID[i]+ "."+nameFile.split(".")[-1]
+        nameFile = "/".join( nameFile.split("/")[:-1] ) +"/" +\
+        trainID[i]+ "."+nameFile.split(".")[-1]
 
         image = imread(nameFile)
         if( i==2289):
